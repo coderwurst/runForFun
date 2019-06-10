@@ -16,7 +16,12 @@ class RunForFun extends Component {
     }
 
     loadTraining() {
-        this.props.navigation.navigate('TimerDisplay');
+        console.log(this.state);
+        this.props.navigation.navigate('TimerDisplay', {
+            duration: this.state.totalTraining,
+            active: this.state.activeTime,
+            rest: this.state.restTime
+        });
     }
     
     render() {
