@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Keyboard, StyleSheet, Text, 
     TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+import TimerDisplay from './TimerDisplay'
 
 class RunForFun extends Component {    
     
@@ -13,14 +15,8 @@ class RunForFun extends Component {
         };
     }
 
-    startTraining() {
-        // 10 second countdown to start
-
-        // start 1st active time
-
-        // notify of rest time
-
-        // active time -> rest time etc.
+    loadTraining() {
+        this.props.navigation.navigate('TimerDisplay');
     }
     
     render() {
@@ -60,8 +56,8 @@ class RunForFun extends Component {
                 </TextInput>
                 <Button style={styles.Button}
                         title="start" 
-                        color="#FFFFFF"
-                        onPress= { this.startTraining }
+                        color="#FF623D"
+                        onPress= { () => this.loadTraining() }
                         accessibilityLabel="Start Exercise">
                 </Button>
             </View>
@@ -69,29 +65,35 @@ class RunForFun extends Component {
         );
     }
   }
+
   
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#FF4B89',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: 18
-    },
-    TextInput: {
-      backgroundColor: '#FFFFFF',
-      color: '#DA3DFF',
-      margin: 24,
-      paddingLeft: 12,
-      width: 256,
-      height: 50
-    },
-    Button: {
-      backgroundColor: '#FF803D',
-      marginTop: 48,
-      width: 256,
-      height: 50
-    }
-  });
-
-  export default RunForFun
+      container: {
+          flex: 1,
+          backgroundColor: '#DA3DFF',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 18
+        },
+        TextInput: {
+            backgroundColor: '#E838CE',
+            color: '#FF623D',
+            margin: 24,
+            paddingLeft: 12,
+            width: 256,
+            height: 50
+        },
+        Button: {
+            backgroundColor: '#FF623D',
+            marginTop: 48,
+            width: 256,
+            height: 50
+        }
+    });
+    
+    const AppNavigator = createStackNavigator({
+        Dashboard: { screen: RunForFun },
+        TimerDisplay: { screen: TimerDisplay }
+    });
+    
+    export default createAppContainer(AppNavigator);
