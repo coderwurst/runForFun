@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CountDown from 'react-native-countdown-component';
 import { Text, View } from 'react-native';
+import Timer from './CountdownTimer';
 
 class TimerDisplay extends Component {
     
@@ -55,6 +56,14 @@ class TimerDisplay extends Component {
                     size={ 20 }
                     timeToShow={ ['M','S'] }
                     running={ false }
+                    />
+                <Timer
+                    id={ 'test' }
+                    ref={ 'testTimer' }
+                    until={ 15 }
+                    onFinish={ alert('finished') }
+                    onPress={ () => alert('hello') }
+                    running={ true }
                     />
             </View>
         )
