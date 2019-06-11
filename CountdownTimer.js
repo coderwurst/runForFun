@@ -11,8 +11,6 @@ class Timer extends Component {
             until: this.props.time,
             onFinish: this.props.onFinish,
             onPress: this.props.onPress,
-            size: 20,
-            timeToShow: ['M','S'],
             running: this.props.running
         };
     }
@@ -21,6 +19,8 @@ class Timer extends Component {
         return (
             <CountDown
                 {...this.props}
+                size={ 20 }
+                timeToShow={ ['M','S'] }
             />
         )
     }
