@@ -16,7 +16,7 @@ class TimerDisplay extends Component {
     
     runTraining() {
         // TODO 3 second countdown to start & update up
-
+        alert('start training...')
 
         // TODO active time -> rest time until duration has been met
         for(i = 0; i < this.state.totalTraining; i++) {
