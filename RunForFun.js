@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Button, Keyboard, StyleSheet, Text, 
     TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import ActiveDisplay from './Active'
 import TimerDisplay from './TimerDisplay'
+import RestDisplay from './Rest'
 
 class RunForFun extends Component {    
     
@@ -16,7 +18,6 @@ class RunForFun extends Component {
     }
 
     loadTraining() {
-        console.log(this.state);
         this.props.navigation.navigate('TimerDisplay', {
             duration: this.state.totalTraining,
             active: this.state.activeTime,
@@ -30,17 +31,7 @@ class RunForFun extends Component {
             <View style={styles.container}>
                 <Text>run for fun!</Text>
                 <TextInput  style={styles.TextInput}
-                            placeholder="Training Time"
-                            onChangeText={(text) => this.setState({
-                                totalTraining: text,
-                                activeTime: this.state.activeTime,
-                                restTime: this.state.restTime
-                            })}
-                            accessibilityLabel="How long do you want to train in total?"
-                            keyboardType="numeric">
-                </TextInput>
-                <TextInput  style={styles.TextInput}
-                            placeholder="Active Time"
+                            placeholder="run"
                             onChangeText={(text) => this.setState({
                                 totalTraining: this.state.totalTraining,
                                 activeTime: text,
@@ -50,7 +41,7 @@ class RunForFun extends Component {
                             keyboardType="numeric">
                 </TextInput>
                 <TextInput  style={styles.TextInput}
-                            placeholder="Rest in between"
+                            placeholder="rest"
                             onChangeText={(text) => this.setState({
                                 totalTraining: this.state.totalTraining,
                                 activeTime: this.state.activeTime,
@@ -59,9 +50,19 @@ class RunForFun extends Component {
                             accessibilityLabel="How much rest in between exercises?"
                             keyboardType="numeric">
                 </TextInput>
+                <TextInput  style={styles.TextInput}
+                            placeholder="repeat"
+                            onChangeText={(text) => this.setState({
+                                totalTraining: text,
+                                activeTime: this.state.activeTime,
+                                restTime: this.state.restTime
+                            })}
+                            accessibilityLabel="How long do you want to train in total?"
+                            keyboardType="numeric">
+                </TextInput>
                 <Button style={styles.Button}
                         title="start" 
-                        color="#FF623D"
+                        color="#ffffff"
                         onPress= { () => this.loadTraining() }
                         accessibilityLabel="Start Exercise">
                 </Button>
@@ -75,21 +76,21 @@ class RunForFun extends Component {
   const styles = StyleSheet.create({
       container: {
           flex: 1,
-          backgroundColor: '#DA3DFF',
+          backgroundColor: '#FF623D',
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: 18
         },
         TextInput: {
-            backgroundColor: '#E838CE',
-            color: '#FF623D',
+            backgroundColor: '#FFFFFF',
+            color: '#E838CE',
             margin: 24,
             paddingLeft: 12,
             width: 256,
             height: 50
         },
         Button: {
-            backgroundColor: '#FF623D',
+            backgroundColor: '#E838CE',
             marginTop: 48,
             width: 256,
             height: 50
@@ -98,7 +99,9 @@ class RunForFun extends Component {
     
     const AppNavigator = createStackNavigator({
         Dashboard: { screen: RunForFun },
-        TimerDisplay: { screen: TimerDisplay }
+        TimerDisplay: { screen: TimerDisplay },
+        ActiveDisplay: { screen: ActiveDisplay },
+        RestDisplay: { screen: RestDisplay }
     });
     
     export default createAppContainer(AppNavigator);
