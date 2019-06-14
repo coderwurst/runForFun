@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Button, Keyboard, StyleSheet, Text, 
     TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import ActiveDisplay from './Active'
 import TimerDisplay from './TimerDisplay'
-import RestDisplay from './Rest'
 
 class RunForFun extends Component {    
     
@@ -18,10 +16,14 @@ class RunForFun extends Component {
     }
 
     loadTraining() {
+        // alert("starting in 3, 2, 1")
         this.props.navigation.navigate('TimerDisplay', {
-            duration: this.state.totalTraining,
+            /*duration: this.state.totalTraining,
             active: this.state.activeTime,
-            rest: this.state.restTime
+            rest: this.state.restTime TODO REMOVE DEBUG CODE*/
+            duration: 5,
+            active: 10000,
+            rest: 5000
         });
     }
     
@@ -100,8 +102,6 @@ class RunForFun extends Component {
     const AppNavigator = createStackNavigator({
         Dashboard: { screen: RunForFun },
         TimerDisplay: { screen: TimerDisplay },
-        ActiveDisplay: { screen: ActiveDisplay },
-        RestDisplay: { screen: RestDisplay }
     });
     
     export default createAppContainer(AppNavigator);
