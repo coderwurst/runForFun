@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Text, Vibration, View } from 'react-native';
 
-class TimerDisplay extends Component {
+class ActivityDisplay extends Component {
     
     constructor(props) {
         super(props);
 
         const { navigation } = this.props;
         this.state = { 
-            totalTraining: navigation.getParam('duration', '00'),
+            repetitions: navigation.getParam('repetitions', '00'),
             activeTime: navigation.getParam('active', '00'),
             restTime: navigation.getParam('rest', '00'),
             active: true,
@@ -52,7 +52,7 @@ class TimerDisplay extends Component {
 
     continueTraining() {
         // TODO active time -> rest time until duration has been met
-        if(this.state.repeats <= this.state.totalTraining) {
+        if(this.state.repeats <= this.state.repetitions) {
             console.log(`turn: ${this.state.repeats}`)
             this.runActive();
         } else {
@@ -63,7 +63,7 @@ class TimerDisplay extends Component {
     render() {    
         return (
             <View style={ this.state.active ? ({ flex: 1, alignItems: 'center', justifyContent: 'center',
-            backgroundColor: 'green' }) : ({ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'blue'})} >
+            backgroundColor: '#BDFF57' }) : ({ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#1D4ECC'})} >
                 <Text>{this.state.active ? 'Active' : 'Rest'}</Text>
                 <Text>Icon</Text>
             </View>
@@ -71,4 +71,4 @@ class TimerDisplay extends Component {
     }
 }
 
-export default TimerDisplay;
+export default ActivityDisplay;

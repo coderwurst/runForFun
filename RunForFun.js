@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import { Button, Keyboard, StyleSheet, Text, 
     TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import TimerDisplay from './TimerDisplay'
+import ActivityDisplay from './ActivityDisplay'
 
 class RunForFun extends Component {    
     
     constructor(props) {
         super(props);
         this.state = { 
-            totalTraining: "10",
-            activeTime: "2",
-            restTime: "1"
+            repetitions: "0",
+            activeTime: "0",
+            restTime: "0"
         };
     }
 
     loadTraining() {
         // alert("starting in 3, 2, 1")
-        this.props.navigation.navigate('TimerDisplay', {
-            /*duration: this.state.totalTraining,
+        this.props.navigation.navigate('ActivityDisplay', {
+            /*duration: this.state.repetitions,
             active: this.state.activeTime,
             rest: this.state.restTime TODO REMOVE DEBUG CODE*/
-            duration: 5,
-            active: 10000,
-            rest: 5000
+            repetitions: 3,
+            active: 3000,
+            rest: 3000
         });
     }
     
@@ -35,9 +35,7 @@ class RunForFun extends Component {
                 <TextInput  style={styles.TextInput}
                             placeholder="run"
                             onChangeText={(text) => this.setState({
-                                totalTraining: this.state.totalTraining,
                                 activeTime: text,
-                                restTime: this.state.restTime
                             })}
                             accessibilityLabel="How long should your active periods be?"
                             keyboardType="numeric">
@@ -45,8 +43,6 @@ class RunForFun extends Component {
                 <TextInput  style={styles.TextInput}
                             placeholder="rest"
                             onChangeText={(text) => this.setState({
-                                totalTraining: this.state.totalTraining,
-                                activeTime: this.state.activeTime,
                                 restTime: text
                             })}
                             accessibilityLabel="How much rest in between exercises?"
@@ -55,9 +51,7 @@ class RunForFun extends Component {
                 <TextInput  style={styles.TextInput}
                             placeholder="repeat"
                             onChangeText={(text) => this.setState({
-                                totalTraining: text,
-                                activeTime: this.state.activeTime,
-                                restTime: this.state.restTime
+                                repetitions: text,
                             })}
                             accessibilityLabel="How long do you want to train in total?"
                             keyboardType="numeric">
@@ -101,7 +95,7 @@ class RunForFun extends Component {
     
     const AppNavigator = createStackNavigator({
         Dashboard: { screen: RunForFun },
-        TimerDisplay: { screen: TimerDisplay },
+        ActivityDisplay: { screen: ActivityDisplay },
     });
     
     export default createAppContainer(AppNavigator);
