@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+
+import ActivityDisplay from './ActivityDisplay'
 import { Button, Keyboard, StyleSheet, Text, 
     TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import ActivityDisplay from './ActivityDisplay'
+import { Dropdown } from 'react-native-material-dropdown';
 
 class RunForFun extends Component {    
     
@@ -11,7 +13,18 @@ class RunForFun extends Component {
         this.state = { 
             repetitions: "0",
             activeTime: "0",
-            restTime: "0"
+            restTime: "0",
+            inputOptions : [{
+                value: 1
+            }, {
+                value: 2
+            }, {
+                value: 3
+            }, {
+                value: 4
+            }, {
+                value: 5
+            }]
         };
     }
 
@@ -32,30 +45,33 @@ class RunForFun extends Component {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
                 <Text>run for fun!</Text>
-                <TextInput  style={styles.TextInput}
-                            placeholder="run"
-                            onChangeText={(text) => this.setState({
-                                activeTime: text,
-                            })}
-                            accessibilityLabel="How long should your active periods be?"
-                            keyboardType="numeric">
-                </TextInput>
-                <TextInput  style={styles.TextInput}
-                            placeholder="rest"
-                            onChangeText={(text) => this.setState({
-                                restTime: text
-                            })}
-                            accessibilityLabel="How much rest in between exercises?"
-                            keyboardType="numeric">
-                </TextInput>
-                <TextInput  style={styles.TextInput}
-                            placeholder="repeat"
-                            onChangeText={(text) => this.setState({
-                                repetitions: text,
-                            })}
-                            accessibilityLabel="How long do you want to train in total?"
-                            keyboardType="numeric">
-                </TextInput>
+                <Dropdown
+                    containerStyle={styles.TextInput}
+                    label='run'
+                    data={this.state.inputOptions}
+                    accessibilityLabel="How long should your active periods be?"
+                    onChangeText={(value) => this.setState({
+                        activeTime: value
+                    })}
+                />
+                <Dropdown
+                    containerStyle={styles.TextInput}
+                    label='rest'
+                    data={this.state.inputOptions}
+                    accessibilityLabel="How long should your rest periods be?"
+                    onChangeText={(value) => this.setState({
+                        restTime: value
+                    })}
+                />
+                <Dropdown
+                    containerStyle={styles.TextInput}
+                    label='repeat'
+                    data={this.state.inputOptions}
+                    accessibilityLabel="How long should your program repeat?"
+                    onChangeText={(value) => this.setState({
+                        repetitions: value
+                    })}
+                />
                 <Button style={styles.Button}
                         title="start" 
                         color="#ffffff"
@@ -78,8 +94,6 @@ class RunForFun extends Component {
           fontSize: 18
         },
         TextInput: {
-            backgroundColor: '#FFFFFF',
-            color: '#E838CE',
             margin: 24,
             paddingLeft: 12,
             width: 256,
