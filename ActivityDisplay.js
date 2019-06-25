@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Image, Text, Vibration, View } from 'react-native';
 
+import styles from './styles';
+
 class ActivityDisplay extends Component {
     
     constructor(props) {
