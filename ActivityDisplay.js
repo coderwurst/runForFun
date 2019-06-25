@@ -7,10 +7,13 @@ class ActivityDisplay extends Component {
         super(props);
 
         const { navigation } = this.props;
+        const minToMillis = 60000;
+        // const minToMillis = 600;
+
         this.state = { 
             repetitions: navigation.getParam('repetitions', '00'),
-            activeTime: navigation.getParam('active', '00'),
-            restTime: navigation.getParam('rest', '00'),
+            activeTime: navigation.getParam('active', '00') * minToMillis,
+            restTime: navigation.getParam('rest', '00') * minToMillis,
             active: true,
             repeats: 0
         };

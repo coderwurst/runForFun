@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ActivityDisplay from './ActivityDisplay'
 import { Button, Keyboard, StyleSheet, Text, 
-    TextInput, TouchableWithoutFeedback, View } from 'react-native';
+    TouchableWithoutFeedback, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import { Dropdown } from 'react-native-material-dropdown';
 
@@ -29,14 +29,10 @@ class RunForFun extends Component {
     }
 
     loadTraining() {
-        // alert("starting in 3, 2, 1")
         this.props.navigation.navigate('ActivityDisplay', {
-            /*duration: this.state.repetitions,
+            duration: this.state.repetitions,
             active: this.state.activeTime,
-            rest: this.state.restTime TODO REMOVE DEBUG CODE*/
-            repetitions: 3,
-            active: 3000,
-            rest: 3000
+            rest: this.state.restTime
         });
     }
     
