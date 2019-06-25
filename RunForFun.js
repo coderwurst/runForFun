@@ -42,7 +42,7 @@ class RunForFun extends Component {
         return (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.container}>
-                    <Text>run for fun!</Text>
+                    <Text style={styles.Title}>run for fun!</Text>
                     <Dropdown
                         containerStyle={styles.TextInput}
                         label='run'

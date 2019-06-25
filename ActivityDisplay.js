@@ -71,9 +71,9 @@ class ActivityDisplay extends Component {
                     require('./battery-charging.png')  
         return (
             <View style={ this.state.active ? ({ flex: 1, alignItems: 'center', justifyContent: 'center',
-            backgroundColor: '#BDFF57' }) : ({ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#1D4ECC'})} >
-                <Text style={{ marginBottom: 24 }}>{this.state.active ? 'Active' : 'Rest'}</Text>
-                <Image source={icon} style={{ width: 256, height: 256, resizeMode: 'contain' }}/>
+            backgroundColor: '#fbfbfb' }) : ({ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2677bb'})} >
+                <Text style={styles.Title}>{this.state.active ? 'Active' : 'Rest'}</Text>
+                <Image source={icon} style={styles.Icon}/>
             </View>
         )
     }
